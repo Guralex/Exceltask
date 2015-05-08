@@ -18,24 +18,22 @@ import org.apache.poi.ss.usermodel.Row;
 
 public class Excel {
 	final static String filePath = "configuration/testData.xls";
-	final static String filePath2 = "configuration/text.txt";
+	
 	private HashMap<Integer, ArrayList<String>> table;
 
 	public HashMap<Integer, ArrayList<String>> getFullTable() {
 		HashMap<Integer, ArrayList<String>> table = new HashMap<Integer, ArrayList<String>>();
 		try {
 			FileInputStream file = new FileInputStream(new File(filePath));
-			// Get the workbook instance for XLS file
 			HSSFWorkbook workbook = new HSSFWorkbook(file);
-			// Get first sheet from the workbook
 			HSSFSheet sheet = workbook.getSheetAt(0);
 			
 			HSSFRow currentRow = null;
 			HSSFCell currentCell = null;
-			int currentRowNumber = 1; // rows with data start from second row
+			int currentRowNumber = 0; 
 			int currentCellNumber = 0;
-			int rowNumber = 1; // rows count in resulting HashMap will start
-								// from 1
+			int rowNumber = 1; 
+								
 			while ((currentRow = sheet.getRow(currentRowNumber)) != null) {
 				ArrayList<String> row = new ArrayList<String>();
 				while ((currentCell = currentRow.getCell(currentCellNumber)) != null) {
@@ -74,4 +72,20 @@ public class Excel {
 //		}
 		return row;
 	}
+
+	public void printTable(HashMap<Integer, ArrayList<String>> table){
+		
+		
+		System.out.println(filePath+"\n***************************");
+		
+		for (Map.Entry<Integer, ArrayList<String>> tableRow : table.entrySet()) {
+			
+			for (int i = 0; i < tableRow.getValue().size(); i++) {
+				System.out.print(tableRow.getValue().get(i) + "\t");
+			}
+			System.out.println();
+			}
+		
+	}
+
 }
