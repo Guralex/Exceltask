@@ -65,11 +65,7 @@ public class Excel {
 		if(rowNumber < table.keySet().size()) {
 			row = table.get(rowNumber);
 		}
-		System.out.println(table.keySet().size());
-//System.out.println(table.keySet().size());
-//		for (int i = 0; i < table.keySet().size(); i++) {
-//			
-//		}
+		
 		return row;
 	}
 
@@ -88,4 +84,8 @@ public class Excel {
 		
 	}
 
+	public String getElem(int x, int y){
+		
+		return getTableRow(x).get(y);
+	}
 }

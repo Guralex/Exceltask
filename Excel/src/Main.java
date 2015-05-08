@@ -15,6 +15,12 @@ public class Main {
 
 		ex.printTable(table);
 		
+		
+		System.out.println("Getting row");
+		System.out.println(ex.getTableRow(2));
+	
+		System.out.println("Getting elem");
+		System.out.println(ex.getElem(3, 1));
 	}
 
 }
